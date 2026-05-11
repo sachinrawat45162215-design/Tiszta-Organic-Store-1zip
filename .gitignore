@@ -47,3 +47,6 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Large generated files — not needed in the repo
+zipFile.zip
