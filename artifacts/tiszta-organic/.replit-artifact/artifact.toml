@@ -19,7 +19,7 @@ run = "pnpm --filter @workspace/tiszta-organic run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/tiszta-organic", "run", "build" ]
-publicDir = "artifacts/tiszta-organic/dist/public"
+publicDir = "artifacts/tiszta-organic/dist"
 serve = "static"
 
 [[services.production.rewrites]]
