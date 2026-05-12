@@ -43,10 +43,19 @@ export default defineConfig({
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
     sourcemap: false,
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       onwarn(warning, warn) {
         if (warning.code === "SOURCEMAP_ERROR") return;
         warn(warning);
+      },
+      output: {
+        manualChunks: {
+          "vendor-react": ["react", "react-dom"],
+          "vendor-motion": ["framer-motion"],
+          "vendor-three": ["three", "@react-three/fiber", "@react-three/drei"],
+          "vendor-ui": ["@radix-ui/react-dialog", "@radix-ui/react-tooltip", "@radix-ui/react-navigation-menu"],
+        },
       },
     },
   },
