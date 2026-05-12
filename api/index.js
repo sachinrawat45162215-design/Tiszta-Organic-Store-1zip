@@ -1,9 +1,8 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
 
 const GMAIL_USER = "tisztaorganic@gmail.com";
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -23,11 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   /* ── POST /api/contact ── */
   if (req.method === "POST" && url.includes("contact")) {
-    const { name, email, message } = (req.body ?? {}) as {
-      name?: string;
-      email?: string;
-      message?: string;
-    };
+    const { name, email, message } = req.body ?? {};
 
     if (!name || !email || !message) {
       res.status(400).json({ error: "name, email, and message are required" });
@@ -50,13 +45,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         from: `"TISZTA Organic Contact" <${GMAIL_USER}>`,
         to: GMAIL_USER,
         replyTo: email,
-        subject: `New message from ${name} – TISZTA Organic`,
+        subject: `New message from ${name} \u2013 TISZTA Organic`,
         text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
         html: `
           <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
             <div style="background:#1a5c2a;padding:24px 32px;border-radius:12px 12px 0 0">
               <h2 style="color:#fff;margin:0;font-size:22px">New Customer Message</h2>
-              <p style="color:#b8f0c8;margin:4px 0 0;font-size:14px">TISZTA Organic – Contact Form</p>
+              <p style="color:#b8f0c8;margin:4px 0 0;font-size:14px">TISZTA Organic \u2013 Contact Form</p>
             </div>
             <div style="background:#faf8f2;padding:32px;border:1px solid #e5e0d5;border-top:none;border-radius:0 0 12px 12px">
               <table style="width:100%;border-collapse:collapse;margin-bottom:24px">

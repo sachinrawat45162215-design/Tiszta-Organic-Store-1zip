@@ -1,5 +1,5 @@
 {
-  "installCommand": "pnpm install --frozen-lockfile",
+  "installCommand": "pnpm install",
   "buildCommand": "pnpm --filter @workspace/tiszta-organic run build",
   "outputDirectory": "artifacts/tiszta-organic/dist",
   "rewrites": [

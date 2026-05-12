@@ -51,7 +51,6 @@ export default defineConfig({
       },
       output: {
         manualChunks: {
-          "vendor-react": ["react", "react-dom"],
           "vendor-motion": ["framer-motion"],
           "vendor-three": ["three", "@react-three/fiber", "@react-three/drei"],
           "vendor-ui": ["@radix-ui/react-dialog", "@radix-ui/react-tooltip", "@radix-ui/react-navigation-menu"],
