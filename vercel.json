@@ -1,6 +1,6 @@
 {
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm --filter @workspace/api-server run build && pnpm --filter @workspace/tiszta-organic run build",
+  "buildCommand": "pnpm --filter @workspace/tiszta-organic run build",
   "outputDirectory": "artifacts/tiszta-organic/dist/public",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api" },
